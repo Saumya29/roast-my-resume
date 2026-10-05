@@ -15,7 +15,7 @@ const _spaceMono = Space_Mono({
 	variable: "--font-space-mono",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://roast.saumyatiwari.com";
+const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://roast.saumyat.com";
 
 export const viewport: Viewport = {
 	themeColor: "#dc2626",
@@ -26,11 +26,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
 	metadataBase: new URL(BASE_URL),
 	title: {
-		default: "RoastMyResume - The rejection letter you deserved",
+		default: "RoastMyResume - Clear feedback, stronger applications",
 		template: "%s | RoastMyResume",
 	},
 	description:
-		"Paste your resume and job description. Get brutally honest AI feedback on exactly why you didn't get hired. 3 free roasts, no credit card required.",
+		"Compare your resume with a job description. Find missing evidence and get concrete suggestions for better bullet points.",
 	keywords: [
 		"resume",
 		"job application",
@@ -47,8 +47,9 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		url: BASE_URL,
 		siteName: "RoastMyResume",
-		title: "RoastMyResume - The rejection letter you deserved",
-		description: "Get brutally honest AI feedback on why you didn't get the job. 3 free roasts.",
+		title: "RoastMyResume - Clear feedback, stronger applications",
+		description:
+			"Compare your resume with a job description and get clear, actionable AI feedback.",
 		images: [
 			{
 				url: `${BASE_URL}/og-image.png`,
@@ -61,9 +62,8 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: "RoastMyResume",
-		description: "The rejection letter you deserved but never got. Get roasted free.",
+		description: "Clear resume feedback and concrete next edits.",
 		images: [`${BASE_URL}/og-image.png`],
-		creator: "@whydidntigetit",
 	},
 	robots: {
 		index: true,

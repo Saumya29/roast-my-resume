@@ -5,7 +5,7 @@ export function Footer() {
 		<footer className="border-t border-zinc-800 py-8 px-4">
 			<div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center text-center md:text-left">
 				<p className="font-mono text-xs text-zinc-500">
-					&copy; {new Date().getFullYear()} WhyDidntIGetTheJob
+					&copy; {new Date().getFullYear()} RoastMyResume
 				</p>
 
 				<nav className="flex items-center justify-center gap-6">
@@ -24,14 +24,9 @@ export function Footer() {
 				</nav>
 
 				<div className="flex items-center justify-center md:justify-end">
-					<a
-						href="https://twitter.com/whydidntigetit"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="font-mono text-xs text-zinc-500 hover:text-zinc-300 transition-colors py-2"
-					>
-						@whydidntigetit
-					</a>
+					<Link href="/demo" className="font-mono text-xs text-zinc-500 hover:text-zinc-300 py-2">
+						Sample analysis
+					</Link>
 				</div>
 			</div>
 		</footer>

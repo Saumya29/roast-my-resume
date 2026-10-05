@@ -10,7 +10,7 @@ const exampleRoasts = [
 		borderColor: "border-red-500/20",
 		title: "Senior Developer",
 		target: "FAANG",
-		quote: "Your 'extensive experience' reads like a Wikipedia summary of technologies you've heard of.",
+		quote: "The resume lists technologies, but needs examples of what you built and owned.",
 		gaps: ["No quantified impact", "Generic buzzwords", "Missing system design"],
 	},
 	{
@@ -19,7 +19,7 @@ const exampleRoasts = [
 		borderColor: "border-orange-400/20",
 		title: "Product Manager",
 		target: "Series B Startup",
-		quote: "You listed 'stakeholder management' 4 times. The stakeholders clearly weren't managing you back.",
+		quote: "Describe one launch you owned and how you measured its outcome.",
 		gaps: ["No product metrics", "Vague ownership", "Missing launches"],
 	},
 	{
@@ -28,28 +28,40 @@ const exampleRoasts = [
 		borderColor: "border-yellow-400/20",
 		title: "Data Scientist",
 		target: "Big Tech",
-		quote: "Solid fundamentals, but your projects sound like Kaggle tutorials with extra steps.",
+		quote:
+			"The projects show fundamentals. Add deployment and business context if you have that experience.",
 		gaps: ["No production ML", "Missing business impact"],
 	},
 ];
 
 const stats = [
-	{ value: "47", label: "Avg. ghostings before insight" },
-	{ value: "3.2s", label: "Time a recruiter spends on resume" },
-	{ value: "94%", label: "Users who found critical gaps" },
+	{ value: "MATCH", label: "Resume vs. job description" },
+	{ value: "GAPS", label: "Evidence to strengthen" },
+	{ value: "EDITS", label: "Specific next steps" },
 ];
 
 const features = [
-	{ id: "01", title: "Resume Analysis", desc: "Line-by-line breakdown of what's hurting your chances." },
-	{ id: "02", title: "Skill Gap Map", desc: "Exact skills missing vs. what the job demands." },
-	{ id: "03", title: "ATS Score", desc: "How well your resume survives the bots before humans see it." },
-	{ id: "04", title: "Roast Grade A–F", desc: "A single brutal letter that sums it all up." },
+	{
+		id: "01",
+		title: "Resume Analysis",
+		desc: "Line-by-line breakdown of what's hurting your chances.",
+	},
+	{ id: "02", title: "Skill Gap Map", desc: "Requirements your resume does not yet demonstrate." },
+	{
+		id: "03",
+		title: "ATS Score",
+		desc: "An AI estimate of keyword fit, not a test of an employer’s ATS.",
+	},
+	{
+		id: "04",
+		title: "Roast Grade A–F",
+		desc: "A quick AI estimate of fit, with supporting reasons.",
+	},
 ];
 
 export default function Home() {
 	return (
 		<main className="min-h-[calc(100vh-3.5rem)] flex flex-col font-sans">
-
 			{/* ── Hero ── */}
 			<section className="relative flex-1 flex flex-col items-center justify-center px-4 py-20 md:py-28 grid-texture overflow-hidden">
 				{/* Faint background label */}
@@ -65,19 +77,18 @@ export default function Home() {
 					<div className="flex items-center gap-2.5 border border-border bg-surface rounded px-3 py-1.5">
 						<span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
 						<span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
-							The truth hurts. Apply anyway.
+							Clear feedback. Concrete edits.
 						</span>
 					</div>
 
 					{/* Headline */}
 					<h1 className="text-5xl md:text-7xl font-black tracking-tight leading-none text-balance">
-						Why Didn&apos;t I{" "}
-						<span className="text-primary">Get The Job?</span>
+						Roast <span className="text-primary">My Resume</span>
 					</h1>
 
 					<p className="text-lg text-muted-foreground max-w-md leading-relaxed text-pretty">
-						The rejection letter you deserved but never got. Paste your resume and the job description — our AI tells you{" "}
-						<span className="text-foreground font-medium">exactly</span> why you got ghosted.
+						Compare your resume with a job description. Get clear feedback on missing evidence,
+						relevant skills, and stronger bullet points.
 					</p>
 
 					{/* CTA */}
@@ -87,12 +98,14 @@ export default function Home() {
 								size="lg"
 								className="bg-primary hover:bg-brand-dim text-primary-foreground font-mono tracking-widest text-sm h-12 px-8 red-glow"
 							>
-								GET ROASTED
+								REVIEW MY RESUME
 							</Button>
 						</Link>
-						<span className="font-mono text-xs text-muted-foreground tracking-wide">
-							3 free credits — no card required
-						</span>
+						<Link href="/demo">
+							<Button size="lg" variant="outline" className="h-12 px-6 font-mono text-sm">
+								VIEW SAMPLE ANALYSIS
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -102,8 +115,12 @@ export default function Home() {
 				<div className="max-w-4xl mx-auto px-4 py-6 grid grid-cols-3 divide-x divide-border">
 					{stats.map((s) => (
 						<div key={s.label} className="flex flex-col items-center gap-1 px-4">
-							<span className="font-mono font-black text-2xl md:text-3xl text-foreground">{s.value}</span>
-							<span className="font-mono text-[10px] text-muted-foreground tracking-wide text-center uppercase">{s.label}</span>
+							<span className="font-mono font-black text-2xl md:text-3xl text-foreground">
+								{s.value}
+							</span>
+							<span className="font-mono text-[10px] text-muted-foreground tracking-wide text-center uppercase">
+								{s.label}
+							</span>
 						</div>
 					))}
 				</div>
@@ -113,7 +130,9 @@ export default function Home() {
 			<section className="px-4 py-16 bg-background">
 				<div className="max-w-4xl mx-auto">
 					<div className="flex items-center gap-4 mb-10">
-						<span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">What you get</span>
+						<span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+							What you get
+						</span>
 						<div className="flex-1 h-px bg-border" />
 					</div>
 					<div className="grid sm:grid-cols-2 gap-px bg-border border border-border rounded overflow-hidden">
@@ -132,7 +151,9 @@ export default function Home() {
 			<section className="px-4 pb-16 bg-background">
 				<div className="max-w-4xl mx-auto">
 					<div className="flex items-center gap-4 mb-10">
-						<span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">Recent verdicts</span>
+						<span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+							Illustrative examples · fictional candidates
+						</span>
 						<div className="flex-1 h-px bg-border" />
 					</div>
 					<div className="flex flex-col gap-3">
@@ -144,10 +165,14 @@ export default function Home() {
 								<div className="flex items-start gap-4 p-5">
 									{/* Grade */}
 									<div className="flex-shrink-0 w-16 flex flex-col items-center gap-1 pt-1">
-										<span className={`font-mono font-black text-3xl leading-none ${roast.gradeColor}`}>
+										<span
+											className={`font-mono font-black text-3xl leading-none ${roast.gradeColor}`}
+										>
 											{roast.grade}
 										</span>
-										<span className="font-mono text-[9px] text-muted-foreground tracking-widest uppercase">GRADE</span>
+										<span className="font-mono text-[9px] text-muted-foreground tracking-widest uppercase">
+											GRADE
+										</span>
 									</div>
 
 									{/* Divider */}
@@ -158,7 +183,9 @@ export default function Home() {
 										<div className="flex items-center gap-2 flex-wrap">
 											<span className="font-bold text-foreground text-sm">{roast.title}</span>
 											<span className="font-mono text-xs text-muted-foreground">→</span>
-											<span className="font-mono text-xs text-muted-foreground">{roast.target}</span>
+											<span className="font-mono text-xs text-muted-foreground">
+												{roast.target}
+											</span>
 										</div>
 										<div className="relative">
 											<p className="text-muted-foreground text-sm leading-relaxed italic">
@@ -183,7 +210,9 @@ export default function Home() {
 
 								{/* Hover CTA */}
 								<div className="absolute inset-0 flex items-end justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-									<span className="font-mono text-xs text-primary tracking-wide">GET YOUR ROAST →</span>
+									<span className="font-mono text-xs text-primary tracking-wide">
+										GET YOUR ROAST →
+									</span>
 								</div>
 							</div>
 						))}
@@ -195,12 +224,14 @@ export default function Home() {
 			<footer className="border-t border-border bg-surface px-4 py-16">
 				<div className="max-w-2xl mx-auto text-center flex flex-col items-center gap-6">
 					<p className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
-						Trusted by job seekers who got real feedback
+						Try the sample before uploading your own resume
 					</p>
 					<blockquote className="text-foreground text-lg font-medium text-pretty">
-						&ldquo;I finally understand why 47 companies ghosted me.&rdquo;
+						Useful feedback starts with what your resume actually shows.
 					</blockquote>
-					<span className="font-mono text-xs text-muted-foreground">— A humbled software engineer</span>
+					<span className="font-mono text-xs text-muted-foreground">
+						AI cannot know why an employer rejected an application.
+					</span>
 					<Link href="/analyze">
 						<Button
 							size="lg"

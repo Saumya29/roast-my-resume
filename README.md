@@ -1,74 +1,47 @@
-# WhyDidntIGetTheJob
+# RoastMyResume
 
-> The rejection letter you deserved but never got.
+Compare a resume with a job description and get specific, constructive AI feedback.
 
-Paste your resume and job description. Get brutal AI feedback on why you didn't get the job.
+[Live app](https://roast.saumyat.com) · [Public sample analysis](https://roast.saumyat.com/demo)
 
-## Demo
+## Try it
 
-<video src="demo.mp4" width="100%" autoplay loop muted playsinline></video>
-
-![Demo](demo.gif)
+The sample is a fixed, hand-written example with fictional inputs. It needs no account and does not call AI or consume credits. For a live review, sign in and supply your own resume and job description. New accounts receive three free reviews; paid credit purchases are not currently enabled.
 
 ## Features
 
-- 🔥 Brutal but constructive AI feedback
-- 📊 Roast grade (A-F)
-- 🎯 Skill gap breakdown
-- 💬 "What the hiring manager probably said"
-- 💡 Actionable improvement tips
-- 📸 Screenshot-friendly results
-- 🔗 Shareable results page
+- Resume/job requirement comparison and supporting notes
+- Skill evidence gaps and three prioritized next steps
+- Bullet rewrites instructed to preserve the original facts
+- AI keyword-fit estimate, explicitly labelled as an estimate rather than an employer ATS test
+- Shareable results and PDF export
+- PDF text extraction with unpdf
+
+AI cannot establish actual rejection reasons or employer opinions. Applicant counts and ranking predictions are not displayed. Check generated advice before using it; do not add unverified claims to a resume. Results links are publicly shareable, so use fictional inputs when demonstrating the project.
 
 ## Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS + shadcn/ui
-- **Payments:** Stripe Checkout
-- **AI:** OpenAI GPT-4o
-- **Deployment:** Vercel
+Next.js 14, TypeScript, Tailwind CSS, shadcn/ui, OpenAI gpt-5-mini, Clerk authentication, Convex storage, optional Upstash rate limiting, and Sentry error tracking. Deployed on Vercel.
 
-## Getting Started
+## Run locally
 
-1. Clone and install:
 ```bash
 pnpm install
-```
-
-2. Set up environment variables:
-```bash
 cp .env.example .env.local
-# Fill in your API keys
-```
-
-3. Run locally:
-```bash
+# Fill in OpenAI, Clerk and Convex settings for live analysis.
 pnpm dev
 ```
 
-4. Set up Stripe webhook (for local dev):
-```bash
-stripe listen --forward-to localhost:3000/api/webhook
-```
+Use `pnpm dev:convex` when developing the Convex backend. Use `pnpm build` to verify production compilation.
 
-## Environment Variables
+## Environment
 
-| Variable | Description |
-|----------|-------------|
-| `STRIPE_SECRET_KEY` | Stripe secret key |
-| `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret |
-| `OPENAI_API_KEY` | OpenAI API key |
-| `NEXT_PUBLIC_URL` | Your app URL (for redirects) |
+| Variable | Purpose |
+|----------|---------|
+| `OPENAI_API_KEY` | Live AI analysis |
+| `NEXT_PUBLIC_CONVEX_URL` | Convex deployment |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY` | Authentication |
+| `NEXT_PUBLIC_URL` | Canonical URL, normally `https://roast.saumyat.com` |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Optional distributed rate limiting |
 
-## Deploy to Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/whydidntigetthejob)
-
-1. Connect your repo to Vercel
-2. Add environment variables
-3. Deploy
-4. Set up Stripe webhook pointing to `https://yourdomain.com/api/webhook`
-
-## License
-
-MIT
+Analysis requires authentication and available credits. The sample page does not bypass those checks.
