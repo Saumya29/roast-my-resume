@@ -31,7 +31,6 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 	};
 
 	const gradeColor = gradeColors[result.grade] || "#ef4444";
-	const competition = result.competition;
 	const skills = result.skillGapHeatmap || [];
 	const missingSkills = skills.filter((s) => s.status === "missing").slice(0, 3);
 
@@ -52,31 +51,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 				<div style={{ display: "flex", alignItems: "center" }}>
 					<span style={{ fontSize: "28px" }}>🔥</span>
 					<span style={{ fontSize: "22px", color: "#a3a3a3", marginLeft: "10px", fontWeight: 600 }}>
-						WhyDidntIGetTheJob
+						RoastMyResume
 					</span>
 				</div>
-				{competition && (
-					<div style={{ display: "flex", gap: "24px" }}>
-						<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-							<span style={{ fontSize: "28px", fontWeight: "bold", color: "#ffffff" }}>
-								~{competition.estimatedApplicants}
-							</span>
-							<span style={{ fontSize: "12px", color: "#737373" }}>APPLICANTS</span>
-						</div>
-						<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-							<span style={{ fontSize: "28px", fontWeight: "bold", color: "#ffffff" }}>
-								#{competition.estimatedRank}
-							</span>
-							<span style={{ fontSize: "12px", color: "#737373" }}>YOUR RANK</span>
-						</div>
-						<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-							<span style={{ fontSize: "28px", fontWeight: "bold", color: "#ffffff" }}>
-								{competition.percentile}%
-							</span>
-							<span style={{ fontSize: "12px", color: "#737373" }}>PERCENTILE</span>
-						</div>
-					</div>
-				)}
+
 			</div>
 
 			{/* Main content */}
@@ -136,7 +114,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 					{missingSkills.length > 0 && (
 						<div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
 							<div style={{ fontSize: "14px", color: "#ef4444", marginBottom: "4px", letterSpacing: "0.05em" }}>
-								MISSING SKILLS:
+								MISSING RESUME EVIDENCE:
 							</div>
 							{missingSkills.map((skill, i) => (
 								<div
@@ -194,7 +172,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 				<div style={{ fontSize: "16px", color: "#525252", fontStyle: "italic", maxWidth: "70%" }}>
 					&ldquo;{result.hiringManagerQuote.length > 70 ? result.hiringManagerQuote.substring(0, 70) + "..." : result.hiringManagerQuote}&rdquo;
 				</div>
-				<div style={{ fontSize: "14px", color: "#737373", fontWeight: 600 }}>whydidntigetthejob.com</div>
+				<div style={{ fontSize: "14px", color: "#737373", fontWeight: 600 }}>roast.saumyat.com</div>
 			</div>
 		</div>,
 		{

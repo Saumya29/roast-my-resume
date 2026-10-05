@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://whydidntigetthejob.com";
+const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://roast.saumyat.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 1,
 		},
 		{
-			url: `${BASE_URL}/analyze`,
+			url: `${BASE_URL}/demo`,
 			lastModified: new Date(),
 			changeFrequency: "weekly",
 			priority: 0.9,

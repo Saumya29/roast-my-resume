@@ -190,7 +190,7 @@ export default function Home() {
 										<div className="relative">
 											<p className="text-muted-foreground text-sm leading-relaxed italic">
 												&ldquo;{roast.quote.slice(0, 55)}
-												<span className="blur-sm select-none">{roast.quote.slice(55)}</span>
+												<span className="select-text">{roast.quote.slice(55)}</span>
 												&rdquo;
 											</p>
 											<div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-surface pointer-events-none" />
